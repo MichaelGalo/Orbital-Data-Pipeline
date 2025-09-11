@@ -27,7 +27,7 @@ def setup_logging():
     formatter.format = format_json
 
     log_dir = "./logs"
-    os.makedirs(log_dir, exist_ok=True)   # ensure folder exists
+    os.makedirs(log_dir, exist_ok=True) 
     log_file = os.path.join(log_dir, "application.log")
 
     file_handler = logging.handlers.RotatingFileHandler(
@@ -46,5 +46,3 @@ def setup_logging():
         logger.addHandler(console_handler)
 
     return logger
-
-# logger = setup_logging()
