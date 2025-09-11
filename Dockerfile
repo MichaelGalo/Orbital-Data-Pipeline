@@ -12,9 +12,6 @@ RUN pip install --upgrade pip && \
     pip install uv && \
     uv sync --locked
 
-
 COPY . .
-
-EXPOSE 8080
 
 CMD ["uv", "run", "-m", "src.runner"]
