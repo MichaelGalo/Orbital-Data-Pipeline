@@ -1,26 +1,25 @@
 FROM python:3.13-slim
 
+# Install system dependencies and pipx
 RUN apt-get update && apt-get install -y --no-install-recommends \
-	build-essential \
-	&& rm -rf /var/lib/apt/lists/*
+    build-essential \
+    pipx \
+    && rm -rf /var/lib/apt/lists/*
+
+# Ensure pipx installs binaries to PATH
+ENV PATH=/root/.local/bin:$PATH
 
 WORKDIR /app
 
 # Copy dependency files
 COPY pyproject.toml uv.lock ./
 
-# Create virtual environment and install dependencies
-RUN python -m venv .venv \
-    && .venv/bin/pip install --upgrade pip \
-    && .venv/bin/pip install uv \
-    && .venv/bin/uv sync --locked
+# Install uv globally and sync dependencies in a venv managed by uv
+RUN pipx install uv \
+    && pipx run uv sync --locked
 
-# Copy app source
+# Copy the rest of the app
 COPY . .
 
-# Set environment to use prebuilt venv
-ENV VIRTUAL_ENV=/app/.venv
-ENV PATH="$VIRTUAL_ENV/bin:$PATH"
-
-# Run the pipeline
-CMD ["uv", "run", "-m", "src.runner"]
+# Run the pipeline entirely via uv
+CMD ["pipx", "run", "uv", "run", "-m", "src.runner"]
