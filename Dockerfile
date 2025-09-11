@@ -6,12 +6,21 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 WORKDIR /app
 
+# Copy dependency files
 COPY pyproject.toml uv.lock ./
 
-RUN pip install --upgrade pip && \
-    pip install uv && \
-    uv sync --locked
+# Create virtual environment and install dependencies
+RUN python -m venv .venv \
+    && .venv/bin/pip install --upgrade pip \
+    && .venv/bin/pip install uv \
+    && .venv/bin/uv sync --locked
 
+# Copy app source
 COPY . .
 
+# Set environment to use prebuilt venv
+ENV VIRTUAL_ENV=/app/.venv
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+
+# Run the pipeline
 CMD ["uv", "run", "-m", "src.runner"]
