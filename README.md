@@ -47,7 +47,7 @@ The repository contains pipeline scripts, utilities, orchestration, API, and whe
 
 ## Architecture
 
-![System Diagram](screenshots/Orbital_Architecture.png)
+![System Diagram](screenshots/Orbital_Architecture_2.0.png)
 
 ## Tech Stack
 
