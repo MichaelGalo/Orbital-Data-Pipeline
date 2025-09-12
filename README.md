@@ -61,7 +61,7 @@ The repository contains pipeline scripts, utilities, orchestration, API, and whe
 | **Data Processing** | ![Polars](https://img.shields.io/badge/Polars-5A4FCF?style=flat-square&logo=rust&logoColor=white) | DataFrame manipulation |
 | **Testing** | ![pytest](https://img.shields.io/badge/pytest-009FE3?style=flat-square&logo=pytest&logoColor=white) | Automated testing |
 | **Data Quality** | ![SQL](https://img.shields.io/badge/SQL-0066CC?style=flat-square&logo=sql&logoColor=white) | Data quality checks using SQL |
-| **Orchestration** | ![Cloud Composer](https://img.shields.io/badge/Google_Cloud_Composer-3E4B99?style=flat-square&logo=googlecloud&logoColor=white) | Workflow automation and scheduling |
+| **Orchestration** | ![Cloud Scheduler](https://img.shields.io/badge/Google_Cloud_Composer-3E4B99?style=flat-square&logo=googlecloud&logoColor=white) | Workflow automation and scheduling |
 | **CI/CD** | ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white) | Continuous integration and deployment |
 
 ## Data Schemas
